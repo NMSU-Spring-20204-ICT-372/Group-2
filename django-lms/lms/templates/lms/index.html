@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <!-- Add your CSS link here -->
+    <link rel="stylesheet" href="{% static '/lms/styles.css' %}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container">
+        <div class="navbar-left">
+            <div class="navbar-brand">
+                <img src="{% static 'lms/logo.png' %}" alt="LMS Logo">
+                <span class="navbar-title">Library Management System</span>
+            </div>
+        </div>
+        <div class="navbar-right">
+            <div class="navbar-links">
+                <a href="#">Add Book</a>
+                {% if user.is_authenticated %}
+                    <a href="#">Logout</a>
+                {% else %}
+                    <a href="#">Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="content">
+    <!-- Your main content here -->
+</div>
+
+</body>
+</html>
