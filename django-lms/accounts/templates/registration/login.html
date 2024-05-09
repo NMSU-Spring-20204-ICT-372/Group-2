@@ -1,0 +1,25 @@
+{% extends 'lms/_base.html' %}
+
+{% block content %}
+{% if form.errors %}
+    <p>You have entered an incorrect password or username.</p>
+{% endif %}
+
+{% if next %}
+    {% if not user.is_authenticated %}
+        <h1> Please login. </h1>
+    {% endif %}
+{% endif %}
+
+<h1 style="margin: 15px">Login page</h1>
+<h3 style="margin: 15px">Welcome back!</h3>
+
+<form action="{% url 'login' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Login">
+    <input type="hidden" name="next" value="{{next}}">
+
+</form>
+
+{% endblock content %}

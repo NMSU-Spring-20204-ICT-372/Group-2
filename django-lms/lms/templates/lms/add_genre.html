@@ -1,0 +1,11 @@
+{% extends 'lms/_base.html' %}
+
+{% block content %}
+    <h1>Add Genre</h1>
+    <form method="POST" action="{% url 'add_genre' %}">
+        {% csrf_token %}
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <input type="submit" value="Add Genre">
+    </form>
+{% endblock content %}
