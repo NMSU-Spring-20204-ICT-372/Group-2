@@ -15,15 +15,15 @@
         <div class="navbar-left">
             <div class="navbar-brand">
                 <img src="{% static 'lms/logo.png' %}" alt="LMS Logo">
-                <span class="navbar-title">Library Management System</span>
+                <a href="{% url 'lms-home'%}" class="navbar-title">Library Management System</a>
             </div>
         </div>
         <div class="navbar-right">
             <div class="navbar-links">
                 {% if user.is_authenticated %}
                 <a href="{% url 'add_book' %}" class="nav-link">Add Book</a>
-                <a href="{% url 'add_author' %}" class="nav-link">Add Author</a>
-                <a href="{% url 'add_genre' %}" class="nav-link">Add Genre</a>
+                <a href="{% url 'add_author' %}" class="nav-link">Authors</a>
+                <a href="{% url 'add_genre' %}" class="nav-link">Genres</a>
                 <form method="post" class="nav-link" action="{% url 'logout' %}">
                     {% csrf_token %}
                     <button type="submit">Logout</button>

@@ -55,6 +55,11 @@ body {
     font-size: 20px;
 }
 
+a.navbar-title {
+    text-decoration: none;
+    color: inherit;
+}
+
 /* Navbar Links Styles */
 .navbar-links {
     display: flex;
@@ -79,4 +84,28 @@ body {
 /* Content Styles */
 .content {
     padding: 20px;
+}
+
+.genre-container {
+    display: flex;
+}
+
+.add-genre, .all-genres {
+    flex: 1;
+}
+
+.add-genre {
+    margin-right: 20px;
+}
+
+.author-container {
+    display: flex;
+}
+
+.add-author, .all-authors {
+    flex: 1;
+}
+
+.add-author {
+    margin-right: 20px;
 }

@@ -8,8 +8,7 @@
         <input type="text" id="title" name="title"><br>
 
         <label for="author">Author:</label><br>
-        <input type="text" id="authorInput" oninput="filterAuthors()" placeholder="Type to filter authors">    
-        <select name="author" id="authorSelect" style="display: none;" onchange="fillAuthorInput()">
+        <select name="author" id="authorSelect">
             <option value="">Select Author</option>
             {% for author in authors %}
                 <option value="{{ author.id }}">{{ author.name }}</option>
@@ -17,13 +16,12 @@
         </select><br>
 
         <label for="genre">Genre:</label><br>
-        <input type="text" id="genreInput" oninput="filterGenres()" placeholder="Type to filter genres"><br>
-        <select name="genre" id="genreSelect" style="display: none;">
+        <select name="genre" id="genreSelect">
             <option value="">Select Genre</option>
             {% for genre in genres %}
                 <option value="{{ genre.id }}">{{ genre.name }}</option>
             {% endfor %}
-        </select>        
+        </select><br>               
 
         <label for="description">Description:</label><br>
         <textarea id="description" name="description"></textarea><br>
@@ -36,67 +34,4 @@
 
         <input type="submit" value="Add Book">
     </form>
-    <script>
-        function filterAuthors() {
-            var input, filter, select, options, option, i, txtValue;
-            input = document.getElementById("authorInput");
-            filter = input.value.toUpperCase();
-            select = document.getElementById("authorSelect");
-            options = select.getElementsByTagName("option");
-            
-            if (filter.trim() !== '') {
-                select.style.display = "block";
-            } else {
-                select.style.display = "none";
-            }
-        
-            for (i = 0; i < options.length; i++) {
-                option = options[i];
-                txtValue = option.textContent || option.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    option.style.display = "";
-                } else {
-                    option.style.display = "none";
-                }
-            }
-        } 
-
-        function filterGenres() {
-            var input, filter, select, options, option, i, txtValue;
-            input = document.getElementById("genreInput");
-            filter = input.value.toUpperCase();
-            select = document.getElementById("genreSelect");
-            options = select.getElementsByTagName("option");
-            
-            if (filter.trim() !== '') {
-                select.style.display = "block";
-            } else {
-                select.style.display = "none";
-            }
-        
-            for (i = 0; i < options.length; i++) {
-                option = options[i];
-                txtValue = option.textContent || option.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    option.style.display = "";
-                } else {
-                    option.style.display = "none";
-                }
-            }
-        }
-
-        function fillAuthorInput() {
-            var authorSelect = document.getElementById("authorSelect");
-            var authorInput = document.getElementById("authorInput");
-            var selectedAuthorOption = authorSelect.options[authorSelect.selectedIndex];
-            authorInput.value = selectedAuthorOption.text;
-        }
-
-        function fillGenreInput() {
-            var genreSelect = document.getElementById("genreSelect");
-            var genreInput = document.getElementById("genreInput");
-            var selectedGenreOption = genreSelect.options[genreSelect.selectedIndex];
-            genreInput.value = selectedGenreOption.text;
-        }
-    </script>
 {% endblock content %}

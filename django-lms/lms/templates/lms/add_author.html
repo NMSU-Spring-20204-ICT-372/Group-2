@@ -1,15 +1,34 @@
 {% extends 'lms/_base.html' %}
 
 {% block content %}
-    <h1>Add Author</h1>
-    <form method="POST" action="{% url 'add_author' %}">
-        {% csrf_token %}
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name"><br>
+<div class="author-container">
+    <div class="add-author">
+        <h1>Add Author</h1>
+        <form method="POST" action="{% url 'add_author' %}">
+            {% csrf_token %}
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name"><br>
 
-        <label for="biography">Biography:</label><br>
-        <textarea id="biography" name="biography"></textarea><br>
+            <label for="biography">Biography:</label><br>
+            <textarea id="biography" name="biography"></textarea><br>
 
-        <input type="submit" value="Add Author">
-    </form>
+            <input type="submit" value="Add Author">
+        </form>
+    </div>
+    <div class="all-authors">
+        <h1 style='margin-top: 20px'>All Authors</h1>
+        <ul>
+            {% for author in authors %}
+                <li style='margin-left: 35px;'><b>{{ author.name }}</b>            
+                {% if user.is_authenticated %}
+                <form action="{% url 'delete_author' author.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+                {% endif %}
+                </li><br><br>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 {% endblock content %}

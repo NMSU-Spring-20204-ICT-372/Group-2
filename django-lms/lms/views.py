@@ -18,7 +18,7 @@ def add_author(request):
         
         return redirect('add_author')
     else:
-        return render(request, 'lms/add_author.html')
+        return render(request, 'lms/add_author.html', {'authors': Author.objects.all()})
 
 
 def add_genre(request):
@@ -29,7 +29,7 @@ def add_genre(request):
         
         return redirect('add_genre')
     else:
-        return render(request, 'lms/add_genre.html')
+        return render(request, 'lms/add_genre.html', {'genres': Genre.objects.all()})
 
 
 def add_book(request):
@@ -63,5 +63,21 @@ def delete_book(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     if request.method == 'POST':
         book.delete()
-        return redirect('lms-home')  # Replace 'home' with the name of your home view
-    return redirect('lms-home')  # Redirect to home page if the request method is not POST
+        return redirect('lms-home')
+    return redirect('lms-home')
+
+
+def delete_author(request, author_id):
+    author = get_object_or_404(Author, pk=author_id)
+    if request.method == 'POST':
+        author.delete()
+        return redirect('add_author')
+    return redirect('add_author')
+
+
+def delete_genre(request, genre_id):
+    genre = get_object_or_404(Genre, pk=genre_id)
+    if request.method == 'POST':
+        genre.delete()
+        return redirect('add_genre')
+    return redirect('add_genre')
