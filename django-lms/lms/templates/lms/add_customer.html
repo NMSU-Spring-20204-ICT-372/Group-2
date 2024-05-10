@@ -16,7 +16,7 @@
             <ul>
                 {% for customer in customers %}
                     <li style='margin-left: 35px;'><b>{{ customer.name }}</b></li>
-                    <li style='margin-left: 35px; list-style-type: none;'><b>{{ customer.added_date }}</b></li>          
+                    <li style='margin-left: 35px; list-style-type: none;'>Registered: {{ customer.added_date }}</li>          
                     {% if user.is_authenticated %}
                     <li style='margin-left: 35px; list-style-type: none;'>
                         <form action="{% url 'delete_customer' customer.id %}" method="post">
