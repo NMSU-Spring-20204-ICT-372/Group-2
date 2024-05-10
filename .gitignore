@@ -1,2 +1,3 @@
 venv
 django-lms/lms/migrations
+django-lms/django-lms/db.sqlite3
