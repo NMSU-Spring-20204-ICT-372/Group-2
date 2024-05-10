@@ -1,11 +1,9 @@
-/* Reset CSS */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Global Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f8f8f8;
@@ -18,7 +16,6 @@ body {
     padding: 0 20px;
 }
 
-/* Navbar Styles */
 .navbar {
     background-color: #882345;
     color: whitesmoke;
@@ -32,14 +29,13 @@ body {
 }
 
 .navbar-left {
-    margin-right: auto; /* Pushes the navbar-brand to the left */
+    margin-right: auto;
 }
 
 .navbar-right {
-    margin-left: auto; /* Pushes the navbar-links to the right */
+    margin-left: auto;
 }
 
-/* Navbar Brand Styles */
 .navbar-brand {
     display: flex;
     align-items: center;
@@ -60,7 +56,6 @@ a.navbar-title {
     color: inherit;
 }
 
-/* Navbar Links Styles */
 .navbar-links {
     display: flex;
 

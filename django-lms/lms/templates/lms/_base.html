@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management System</title>
-    <!-- Add your CSS link here -->
     <link rel="stylesheet" href="{% static '/lms/styles.css' %}">
 </head>
 <body>
@@ -24,6 +23,8 @@
                 <a href="{% url 'add_book' %}" class="nav-link">Add Book</a>
                 <a href="{% url 'add_author' %}" class="nav-link">Authors</a>
                 <a href="{% url 'add_genre' %}" class="nav-link">Genres</a>
+                <a href="{% url 'add_customer' %}" class="nav-link">Customers</a>
+                <a href="{% url 'checked_out_book' %}" class="nav-link">Check Out</a>
                 <form method="post" class="nav-link" action="{% url 'logout' %}">
                     {% csrf_token %}
                     <button type="submit">Logout</button>

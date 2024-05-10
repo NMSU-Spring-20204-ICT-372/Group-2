@@ -1,0 +1,44 @@
+{% extends 'lms/_base.html' %}
+
+{% block content %}
+    <div style="display: flex;">
+        <div style="flex: 1; margin-right: 20px;">
+            <h1>Checkout Book</h1>
+            <form method="POST" action="{% url 'checked_out_book' %}">
+                {% csrf_token %}
+                <label for="book">Book:</label><br>
+                <select name="book" id="bookSelect">
+                    <option>Select Book</option>
+                    {% for book in books %}
+                        <option value="{{ book.id }}">{{ book.title }}</option>
+                    {% endfor %}
+                </select><br>
+
+                <label for="customer">Customer:</label><br>
+                <select name="customer" id="customerSelect">
+                    <option>Select Customer</option>
+                    {% for customer in customers %}
+                        <option value="{{ customer.id }}">{{ customer.name }}</option>
+                    {% endfor %}
+                </select><br>
+
+                <input type="submit" value="Checkout Book">
+            </form>
+        </div>
+        <div style="flex: 1;">
+            <h1 style='margin-top: 20px'>All Checked Out Books</h1>
+            <ul>
+                {% for checked_out in checked_out_books %}
+                    <li style='margin-left: 35px;'><b>{{ checked_out.book.title }}</b>            
+                    {% if user.is_authenticated %}
+                        <form action="{% url 'delete_checked_out' checked_out.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Check In</button>
+                        </form>
+                    {% endif %}
+                    </li><br><br>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock content %}

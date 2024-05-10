@@ -10,6 +10,7 @@
         {% for book in books %}
             <li style='margin-left: 35px;'><b>{{ book.title }} - {{ book.author.name }}</b></li>
             <li style='margin-left: 35px; list-style-type: none;'>{{ book.genre }}</li><br>
+            <li style='margin-left: 35px; list-style-type: none;'>Date added: {{ book.added_date }}</li><br>
             <li style='margin-left: 35px; list-style-type: none;'>{{ book.description }}</li>
             <li style='margin-left: 35px; list-style-type: none;'>
                 {% if user.is_authenticated %}

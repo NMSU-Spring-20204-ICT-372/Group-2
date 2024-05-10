@@ -1,0 +1,32 @@
+{% extends 'lms/_base.html' %}
+
+{% block content %}
+    <div style="display: flex;">
+        <div style="flex: 1; margin-right: 20px;">
+            <h1>Add Customer</h1>
+            <form method="POST" action="{% url 'add_customer' %}">
+                {% csrf_token %}
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name"><br>
+                <input type="submit" value="Add customer">
+            </form>
+        </div>
+        <div style="flex: 1;">
+            <h1 style='margin-top: 20px'>All Customers</h1>
+            <ul>
+                {% for customer in customers %}
+                    <li style='margin-left: 35px;'><b>{{ customer.name }}</b></li>
+                    <li style='margin-left: 35px; list-style-type: none;'><b>{{ customer.added_date }}</b></li>          
+                    {% if user.is_authenticated %}
+                    <li style='margin-left: 35px; list-style-type: none;'>
+                        <form action="{% url 'delete_customer' customer.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Delete</button>
+                    </form>
+                    {% endif %}
+                    </li><br><br>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock content %}
