@@ -17,6 +17,7 @@ sudo pip install django
 cd django-lms/
 
 sudo python manage.py makemigrations lms
+
 sudo python manage.py migrate
 
 sudo python manage.py createsuperuser
