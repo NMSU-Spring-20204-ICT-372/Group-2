@@ -20,7 +20,7 @@ sudo apt-get install python3-venv
 
 sudo apt install python3-pip
 
-cd django-lms
+cd group-2
 
 sudo python3 -m venv venv
 
