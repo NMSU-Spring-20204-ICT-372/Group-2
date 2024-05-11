@@ -16,10 +16,10 @@ sudo pip install django
 
 cd django-lms/
 
-sudo python manage.py makemigrations lms
+sudo python3 manage.py makemigrations lms
 
-sudo python manage.py migrate
+sudo python3 manage.py migrate
 
-sudo python manage.py createsuperuser
+sudo python3 manage.py createsuperuser
 
-sudo python manage.py runserver
+sudo python3 manage.py runserver
